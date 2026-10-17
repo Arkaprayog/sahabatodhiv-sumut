@@ -106,7 +106,7 @@ assert.match(dashboard, /id="logoutButton"/);
 assert.match(dashboard, /aria-label="Keluar"/);
 assert.match(worker, /UPDATE admins SET display_name=\? WHERE id=\? AND role='owner' AND active=1/);
 assert.match(worker, /owner_profile_update/);
-assert.equal(pkg.version, "1.1.67");
+assert.equal(pkg.version, "1.1.68");
 const firebaseConfig = JSON.parse(readFileSync("android-app/app/google-services.json", "utf8"));
 const firebaseService = readFileSync("android-app/app/src/main/java/id/sahabatodhiv/sumut/SahabatFirebaseMessagingService.java", "utf8");
 const androidActivity = readFileSync("android-app/app/src/main/java/id/sahabatodhiv/sumut/MainActivity.java", "utf8");
@@ -150,7 +150,7 @@ assert.ok(dashboard.includes('Data Base Kemensos RI DRSKPNO'), "login copyright 
 
 assert.ok(dashboard.includes('href="/app-layout.css?v=2.0.7"') && dashboard.includes('href="/transparent-theme.css?v=2.1.0"') && !dashboard.includes("style.css?v="), "dashboard must load only the centralized stylesheets.");
 assert.ok(dashboard.includes('href="/login.css?v=1.0.3"'), "the isolated Login stylesheet must be linked.");
-assert.ok(dashboard.includes('href="/dashboard.css?v=1.1.67-clean"'), "the dashboard-only solid clean stylesheet must load last.");
+assert.ok(dashboard.includes('href="/dashboard.css?v=1.1.68-profile"'), "the dashboard-only solid clean stylesheet must load last.");
 const isolatedLoginCss = readFileSync("public/login.css", "utf8");
 const solidDashboardCss = readFileSync("public/dashboard.css", "utf8");
 assert.ok(isolatedLoginCss.includes('#loginCard') && isolatedLoginCss.includes('input#password:-webkit-autofill'), "isolated Login CSS must keep password autofill transparent.");
@@ -158,10 +158,12 @@ assert.ok(solidDashboardCss.includes('background-image: none !important') && sol
 assert.ok(dashboard.includes('id="greeting-text" class="greeting-text"'), "owner greeting must be placed above the owner name.");
 assert.ok(dashboard.includes("function updateGreeting()") && dashboard.includes("hours>=5&&hours<11") && dashboard.includes("hours>=11&&hours<15") && dashboard.includes("hours>=15&&hours<18"), "owner greeting must follow the device local time ranges.");
 assert.ok(solidDashboardCss.includes('width: 58px !important') && solidDashboardCss.includes('height: 58px !important'), "owner avatar must be set to 58 by 58 pixels.");
+assert.ok(dashboard.includes('class="owner-profile-topbar"') && dashboard.includes('class="owner-profile-main"') && dashboard.includes('class="live-indicator"'), "owner profile must use top bar, profile body, and Live status rows.");
+assert.ok(solidDashboardCss.includes("border: 2px solid #d32f2f !important") && solidDashboardCss.includes("font-size: 1.15rem !important") && solidDashboardCss.includes("color: #87ceeb !important"), "profile header must honor avatar ring, greeting scale, and Sky Blue Live text.");
 
 assert.ok(dashboard.includes('href="/app-theme.css?v=1.0.2"') && themeCss.includes("backdrop-filter:none!important") && themeCss.includes("background:#2B3520!important") && themeCss.includes("background:#70B8E8!important"), "shared theme must apply solid moss and sky-blue surfaces and disable blur.");
-assert.match(gradle, /versionCode 38/);
-assert.ok(gradle.includes("versionName '1.2.35'"));
+assert.match(gradle, /versionCode 39/);
+assert.ok(gradle.includes("versionName '1.2.36'"));
 assert.match(changelog, /^## 1\.1\.18/m);
 assert.ok(dashboard.includes("Versi " + pkg.version), "dashboard display version must match package.json");
 assert.match(dashboard, /href="\/surat-tugas\.html">Buka &amp; Edit Surat Tugas/);
@@ -175,18 +177,18 @@ assert.match(suratTugasCss, /@page\{size:A4 portrait;margin:0\}/);
 assert.match(suratTugas, /window\.print\(\)/);
 assert.ok(changelog.startsWith("## " + pkg.version), "changelog must begin with the current web package version");
 assert.ok(readFileSync(".github/workflows/validate-deploy.yml", "utf8").includes("typeof packageJson.version === 'string'"), "CI must compare release version dynamically");
-assert.ok(releaseWorkflow.includes("Sahabat-ODHIV-Sumut-APK-release-v1.2.35"), "release APK artifact must use the current Android version");
-assert.ok(debugWorkflow.includes("Sahabat-ODHIV-Sumut-APK-debug-v1.2.35"), "debug APK artifact must use the current Android version");
-assert.ok(androidReadme.includes("Android package version: **1.2.35** (`versionCode 38`)"), "Android README must match Gradle version");
+assert.ok(releaseWorkflow.includes("Sahabat-ODHIV-Sumut-APK-release-v1.2.36"), "release APK artifact must use the current Android version");
+assert.ok(debugWorkflow.includes("Sahabat-ODHIV-Sumut-APK-debug-v1.2.36"), "debug APK artifact must use the current Android version");
+assert.ok(androidReadme.includes("Android package version: **1.2.36** (`versionCode 39`)"), "Android README must match Gradle version");
 assert.ok(androidReadme.includes("web version **" + pkg.version + "**"), "Android README must state current web version");
-assert.ok(rootReadme.includes("release version `1.2.35` (version code `38`)"), "root README must match Android release version");
-assert.ok(rootReadme.includes("Sahabat-ODHIV-Sumut-APK-release-v1.2.35"), "root README artifact link name must match release workflow");
+assert.ok(rootReadme.includes("release version `1.2.36` (version code `38`)"), "root README must match Android release version");
+assert.ok(rootReadme.includes("Sahabat-ODHIV-Sumut-APK-release-v1.2.36"), "root README artifact link name must match release workflow");
 assert.ok(dashboard.includes('href="/transparent-theme.css?v=2.1.0"'), "dashboard must load the shared transparent stylesheet.");
 assert.match(dashboard, /id="notificationBellButton"/);
 
 assert.match(dashboard, /id="ownerLiveClock"[^>]*role="timer"/, "owner profile must contain a live clock");
 assert.match(dashboard, /window\.setInterval\(updateOwnerLiveClock, 1000\)/, "owner clock must update every second");
-assert.ok(dashboard.includes('Live ${date} ${time}'), "clock must use Live date and time text");
+assert.ok(dashboard.includes('class="live-text">Live</span>') && dashboard.includes('id="ownerLiveTimestamp"') && dashboard.includes('timestamp.textContent = `${date} ${time}`'), "clock must render a pulsing Live indicator and separate local timestamp.");
 const ownerCardCss = readFileSync("public/single-layer-floating-dashboard-v1.css", "utf8");
 assert.ok(ownerCardCss.includes('body:has(#dashboard:not([hidden])) #dashboard .owner-card{'), "the final owner card rule must match the high-specificity selector that previously overrode the layout.");
 assert.ok(ownerCardCss.includes('grid-template-areas:"profile summary actions" ". clock clock"!important'), "profile, summary, and all actions must share the first grid row, with the clock separated beneath.");
