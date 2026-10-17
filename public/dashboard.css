@@ -468,3 +468,76 @@ html body:has(#dashboard:not([hidden])) #dashboard .timestamp {
   html body:has(#dashboard:not([hidden])) #dashboard :is(#notificationBellButton,#settingsButton,#logoutButton) { width: 31px !important; min-width: 31px !important; max-width: 31px !important; height: 31px !important; min-height: 31px !important; flex-basis: 31px !important; }
 }
 @media (prefers-reduced-motion: reduce) { html body:has(#dashboard:not([hidden])) #dashboard .pulse-dot { animation: none !important; } }
+
+/* v1.1.69: lock greeting to one line and match the approved compact mobile header. */
+html body:has(#dashboard:not([hidden])) #dashboard .owner-card {
+  background: #1a2219 !important; background-color: #1a2219 !important; background-image: none !important;
+  max-width: 480px !important; padding: 16px 20px !important; border-radius: 8px !important;
+}
+html body:has(#dashboard:not([hidden])) #dashboard .owner-profile-topbar {
+  display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important;
+  justify-content: space-between !important; align-items: center !important; gap: 8px !important;
+  width: 100% !important; min-width: 0 !important; overflow: visible !important;
+}
+html body:has(#dashboard:not([hidden])) #dashboard .owner-profile-topbar .greeting-text {
+  display: block !important; flex: 0 0 auto !important; min-width: max-content !important; max-width: none !important;
+  margin: 0 !important; white-space: nowrap !important; word-break: keep-all !important;
+  overflow-wrap: normal !important; line-break: auto !important; hyphens: none !important;
+  font-size: 1.15rem !important; line-height: 1.2 !important; font-weight: 600 !important;
+  color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; text-align: left !important;
+}
+html body:has(#dashboard:not([hidden])) #dashboard .owner-header-actions {
+  flex: 0 0 auto !important; flex-shrink: 0 !important; width: auto !important; min-width: max-content !important;
+  margin: 0 !important; padding: 0 !important;
+}
+html body:has(#dashboard:not([hidden])) #dashboard .top-actions {
+  display: flex !important; flex: 0 0 auto !important; flex-wrap: nowrap !important;
+  align-items: center !important; justify-content: flex-end !important; gap: 5px !important;
+  width: auto !important; min-width: max-content !important; margin: 0 !important; padding: 0 !important;
+}
+html body:has(#dashboard:not([hidden])) #dashboard :is(#notificationBellButton,#settingsButton,#logoutButton) {
+  display: inline-flex !important; flex: 0 0 30px !important; align-items: center !important; justify-content: center !important;
+  width: 30px !important; min-width: 30px !important; max-width: 30px !important;
+  height: 30px !important; min-height: 30px !important; padding: 5px !important;
+  border: 0 !important; border-radius: 6px !important; background: transparent !important;
+  color: #ffffff !important; box-shadow: none !important;
+}
+html body:has(#dashboard:not([hidden])) #dashboard .owner-avatar {
+  width: 52px !important; height: 52px !important; min-width: 52px !important; min-height: 52px !important;
+  max-width: 52px !important; max-height: 52px !important; flex: 0 0 52px !important;
+  border: 2px solid #c62828 !important; border-radius: 50% !important; object-fit: cover !important;
+}
+html body:has(#dashboard:not([hidden])) #dashboard .owner-profile-side {
+  flex: 0 0 66px !important; width: 66px !important; min-width: 66px !important; align-items: center !important; gap: 4px !important;
+}
+html body:has(#dashboard:not([hidden])) #dashboard #editOwnerProfile {
+  width: 66px !important; max-width: 66px !important; font-size: .75rem !important; line-height: 1.2 !important;
+  white-space: nowrap !important; text-decoration: underline !important;
+}
+html body:has(#dashboard:not([hidden])) #dashboard .owner-summary #ownerName {
+  margin: 0 !important; font-size: 16px !important; font-weight: 700 !important; line-height: 1.2 !important;
+  overflow-wrap: anywhere !important; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important;
+}
+html body:has(#dashboard:not([hidden])) #dashboard .owner-summary #ownerNipSummary {
+  margin: 2px 0 0 !important; font-size: 13px !important; line-height: 1.25 !important;
+  color: #e0e0e0 !important; -webkit-text-fill-color: #e0e0e0 !important; overflow-wrap: anywhere !important;
+}
+html body:has(#dashboard:not([hidden])) #dashboard .owner-summary #ownerInstitutionSummary {
+  margin: 2px 0 0 !important; font-size: 12px !important; line-height: 1.25 !important;
+  color: #d0d0d0 !important; -webkit-text-fill-color: #d0d0d0 !important; text-transform: uppercase !important; overflow-wrap: anywhere !important;
+}
+html body:has(#dashboard:not([hidden])) #dashboard .owner-live-clock {
+  display: flex !important; flex-wrap: nowrap !important; justify-content: flex-end !important; align-items: center !important;
+  gap: 6px !important; width: 100% !important; color: #ffffff !important; text-align: right !important;
+}
+html body:has(#dashboard:not([hidden])) #dashboard .live-text { color: #87ceeb !important; -webkit-text-fill-color: #87ceeb !important; font-weight: 600 !important; }
+html body:has(#dashboard:not([hidden])) #dashboard .pulse-dot { background-color: #00e676 !important; }
+@media (max-width: 420px) {
+  html body:has(#dashboard:not([hidden])) #dashboard .owner-card { padding: 14px 12px !important; gap: 12px !important; }
+  html body:has(#dashboard:not([hidden])) #dashboard .owner-profile-topbar { gap: 6px !important; }
+  html body:has(#dashboard:not([hidden])) #dashboard .owner-profile-topbar .greeting-text { font-size: 1.05rem !important; }
+  html body:has(#dashboard:not([hidden])) #dashboard .top-actions { gap: 3px !important; }
+  html body:has(#dashboard:not([hidden])) #dashboard :is(#notificationBellButton,#settingsButton,#logoutButton) { width: 28px !important; min-width: 28px !important; max-width: 28px !important; height: 28px !important; min-height: 28px !important; flex-basis: 28px !important; padding: 4px !important; }
+  html body:has(#dashboard:not([hidden])) #dashboard .owner-profile-main { gap: 10px !important; }
+  html body:has(#dashboard:not([hidden])) #dashboard .owner-profile-side, html body:has(#dashboard:not([hidden])) #dashboard #editOwnerProfile { width: 64px !important; min-width: 64px !important; max-width: 64px !important; flex-basis: 64px !important; }
+}
