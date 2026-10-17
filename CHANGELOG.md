@@ -1,3 +1,9 @@
+## 1.1.69 — 2026-10-18
+- Memperbaiki sapaan header agar selalu satu baris memakai `white-space: nowrap`, `min-width: max-content`, dan ikon aksi yang tidak menyusut.
+- Menyamakan latar header ke `#1a2219`, mengecilkan avatar menjadi 52×52 px dengan border merah, serta menetapkan tipografi nama 16 px, NIP 13 px, dan instansi 12 px.
+- Mempertahankan status Live di kanan bawah: teks Sky Blue, titik hijau berdenyut, dan timestamp lokal yang tetap diperbarui per detik.
+- Memperbarui web/PWA ke 1.1.69 dan Android debug/native ke 1.2.37 (`versionCode 40`); halaman Login dan autentikasi tetap terisolasi.
+
 ## 1.1.68 — 2026-10-18
 - Merapikan header profil menjadi tiga baris responsif: sapaan dan ikon aksi, avatar 58×58 dengan border merah serta data profil, lalu status Live di kanan bawah.
 - Menggunakan latar header Dark Olive `#1b231c`, teks sapaan putih, Live Sky Blue `#87ceeb`, titik hijau berdenyut, dan timestamp lokal putih yang diperbarui terpisah setiap detik.
