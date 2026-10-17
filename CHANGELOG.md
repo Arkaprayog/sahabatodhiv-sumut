@@ -1,3 +1,9 @@
+## 1.1.68 — 2026-10-18
+- Merapikan header profil menjadi tiga baris responsif: sapaan dan ikon aksi, avatar 58×58 dengan border merah serta data profil, lalu status Live di kanan bawah.
+- Menggunakan latar header Dark Olive `#1b231c`, teks sapaan putih, Live Sky Blue `#87ceeb`, titik hijau berdenyut, dan timestamp lokal putih yang diperbarui terpisah setiap detik.
+- Menghormati preferensi `prefers-reduced-motion`; seluruh perubahan tampilan hanya berlaku pada dashboard dan tidak mengubah struktur atau alur autentikasi Login.
+- Menyelaraskan versi web/PWA ke 1.1.68 serta Android debug/native ke 1.2.36 (`versionCode 39`), dengan pemeriksaan regresi header dan deployment.
+
 ## 1.1.67 — 2026-10-18
 - Menambahkan stylesheet dashboard terpisah `dashboard.css` untuk mengunci tampilan solid clean: latar dashboard Moss Green tanpa foto, card solid beraksen Sky Blue, tanpa blur/glow, serta ukuran font proporsional.
 - Memisahkan layer akhir Login ke `login.css` sambil mempertahankan struktur HTML, background foto alam, dan alur autentikasi; field password tetap transparan tanpa autofill abu-abu dan lapisan kartu putih.
