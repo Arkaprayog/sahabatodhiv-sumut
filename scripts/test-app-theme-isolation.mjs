@@ -18,11 +18,13 @@ assert.match(index,/href="\/app-theme\.css\?v=1\.0\.2"/);
 assert.ok(index.includes('href="/login-glass-v5.css?v=1.0.1"'), "login CSS cache reference must be current.");
 assert.ok(index.includes('href="/login.css?v=1.0.3"'), "final Login override stylesheet must be linked.");
 assert.ok(index.indexOf('href="/login.css?v=1.0.3"') > index.indexOf('href="/app-theme.css?v=1.0.2"'), "isolated Login stylesheet must load after the legacy stack.");
-assert.ok(index.includes('href="/dashboard.css?v=1.1.68-profile"') && index.lastIndexOf('href="/dashboard.css?v=1.1.68-profile"') > index.indexOf('href="/login.css?v=1.0.3"'), "dashboard-only layer must load last and remain separate from Login styles.");
+assert.ok(index.includes('href="/dashboard.css?v=1.1.69-nowrap"') && index.lastIndexOf('href="/dashboard.css?v=1.1.69-nowrap"') > index.indexOf('href="/login.css?v=1.0.3"'), "dashboard-only layer must load last and remain separate from Login styles.");
 const dashboardCss = fs.readFileSync(path.join(dir,"dashboard.css"),"utf8");
 assert.ok(dashboardCss.includes("#1E2517") && dashboardCss.includes("#2B3520") && dashboardCss.includes("#70B8E8"), "dashboard clean layer must use the solid Moss/Sky palette.");
 assert.ok(dashboardCss.includes("background-image: none !important") && dashboardCss.includes("backdrop-filter: none !important"), "dashboard clean layer must remove scenic backgrounds and blur.");
 assert.ok(dashboardCss.includes("#1b231c") && dashboardCss.includes("#d32f2f") && dashboardCss.includes("#00e676") && dashboardCss.includes("#87ceeb") && dashboardCss.includes("owner-live-pulse"), "profile header must use Dark Olive, a red avatar ring, green pulse, and Sky Blue Live label.");
+assert.ok(dashboardCss.includes("#1a2219") && dashboardCss.includes("white-space: nowrap !important") && dashboardCss.includes("min-width: max-content !important"), "greeting must stay on one line with non-shrinking available space.");
+assert.ok(dashboardCss.includes("width: 52px !important") && dashboardCss.includes("height: 52px !important") && dashboardCss.includes("font-size: 16px !important") && dashboardCss.includes("font-size: 13px !important") && dashboardCss.includes("font-size: 12px !important"), "profile avatar and user typography must match the compact specification.");
 
 assert.ok(loginFinalCss.includes('form#gateForm.login-form') && loginFinalCss.includes('background:transparent!important') && loginFinalCss.includes('form#gateForm.login-form::before'), "Login form and its pseudo-elements must not paint the dark rectangle behind password and submit.");
 assert.ok(loginFinalCss.includes('button#togglePassword') && loginFinalCss.includes('button.submit.login-submit[type="submit"]') && loginFinalCss.includes('background:#fff!important'), "password eye icon remains transparent and Masuk remains solid white.");
