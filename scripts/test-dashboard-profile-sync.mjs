@@ -182,7 +182,7 @@ assert.ok(releaseWorkflow.includes("Sahabat-ODHIV-Sumut-APK-release-v1.2.37"), "
 assert.ok(debugWorkflow.includes("Sahabat-ODHIV-Sumut-APK-debug-v1.2.37"), "debug APK artifact must use the current Android version");
 assert.ok(androidReadme.includes("Android package version: **1.2.37** (`versionCode 40`)"), "Android README must match Gradle version");
 assert.ok(androidReadme.includes("web version **" + pkg.version + "**"), "Android README must state current web version");
-assert.ok(rootReadme.includes("release version `1.2.37` (version code `39`)"), "root README must match Android release version");
+assert.ok(rootReadme.includes("release version `1.2.37` (version code `40`)"), "root README must match Android release version");
 assert.ok(rootReadme.includes("Sahabat-ODHIV-Sumut-APK-release-v1.2.37"), "root README artifact link name must match release workflow");
 assert.ok(dashboard.includes('href="/transparent-theme.css?v=2.1.0"'), "dashboard must load the shared transparent stylesheet.");
 assert.match(dashboard, /id="notificationBellButton"/);
